@@ -27,7 +27,9 @@ from h2xh2.experiment import ChemData
 
 matplotlib.rcParams["font.size"] = 12
 
-LAMBDA_D = 0.10806
+LAMBDA_D1 = 0.16673
+LAMBDA_D2 = 0.16885
+
 # N_SHOTS = 100
 # N_SHOTS = 500
 # N_SHOTS = 1000
@@ -45,9 +47,10 @@ ks, betas, ms = data
 
 # Prepare the error_rate used in the noise-aware likelihood function.
 def error_rate(k: int) -> float:
-    lambda_d = LAMBDA_D
-    val = 1 - (1 - lambda_d) ** k
-    return val
+    q = 1 - np.exp(-LAMBDA_D1 * k + LAMBDA_D2)
+    # q = np.maximum(q, 0.01)  # Ensure non-negative
+    q = np.maximum(q, 0.00)  # Ensure non-negative
+    return q
 
 
 ks = ks[:N_SHOTS]
