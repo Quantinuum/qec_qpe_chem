@@ -33,8 +33,10 @@ class Property(NamedTuple):
 
 
 LSDATA = [
-    ("exp_hardware_no_qec", Property("black", "without QEC")),
-    ("exp_hardware", Property("red", "with QEC")),
+    ("pft_hardware", Property("red", "PFT")),
+    ("exp_hardware", Property("green", "Exp")),
+    ("dir_hardware", Property("blue", "Dir")),
+    ("phys_hardware", Property("gray", "Physical")),
 ]
 
 
@@ -85,4 +87,4 @@ plt.legend(fontsize=10)
 plt.xlim(0.0, 14)
 plt.ylim(-0.05, 1.1)
 # plt.show()
-plt.savefig("_fig_calibration_exp.pdf", dpi=300)
+plt.savefig("calibration_compare.pdf", dpi=300)
