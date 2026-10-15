@@ -8,7 +8,7 @@ version = "0.0.0-alpha"
 requires-python = ">=3.12"
 description = "Tools for reproducing the results from the paper"
 readme = "README.md"
-license = "LicenseRef-Proprietary"
+license = "Apache-2.0"
 dependencies = [
     "jupyter",
     "matplotlib",

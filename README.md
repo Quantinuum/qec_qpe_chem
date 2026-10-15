@@ -6,7 +6,7 @@ This repository provides python tooling for running a Quantum Phase Estimation e
 
 K. Yamamoto et al., "Quantum Error-Corrected Computation of Molecular Energies", [PRX Quantum 7, 020319 (2026)](https://journals.aps.org/prxquantum/abstract/10.1103/m7j3-5sk6)
 
-It provides automatic tooling for running experiments on Quantinuum hardware using Steane code primitives, with support for QEC cycles and Iceberg error detection cycles. Rz gates are implemented with gate teleportation techniques. This repository is built on top of the [`pytket`](https://tket.quantinuum.com/api-docs/) library and contains all relevant source code.
+It provides automatic tooling for running experiments on Quantinuum hardware using Steane code primitives, with support for QEC cycles and Iceberg-style error detection cycles. Rz gates are implemented with gate teleportation techniques. This repository is built on top of the [`pytket`](https://tket.quantinuum.com/api-docs/) library and contains all relevant source code.
 
 `pytket` is a python module for interfacing with `TKET`, a quantum computing toolkit and optimising compiler developed by Quantinuum, and is available through `pip`. `pytket` is open source and documentation and use examples can be found at the [github repository](https://github.com/CQCL/pytket). <br>
 

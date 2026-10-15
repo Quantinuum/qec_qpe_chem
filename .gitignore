@@ -11,3 +11,4 @@ __pycache__/
 # Figure to be generated.
 *.pdf
 *.txt
+!LICENSE.txt
