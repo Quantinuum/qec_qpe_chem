@@ -10,6 +10,8 @@ description = "Tools for reproducing the results from the paper"
 readme = "README.md"
 license = "LicenseRef-Proprietary"
 dependencies = [
+    "jupyter",
+    "matplotlib",
     "pytket>=2.0.0",
     "pytket-quantinuum[pecos]>=0.47.0",
 ]
@@ -31,9 +33,6 @@ zip-safe = false
 [tool.setuptools.packages.find]
 include = ["h2xh2*"]
 namespaces = false
-
-[dependency-groups]
-dev = ["jupyter"]
 
 [tool.uv]
 constraint-dependencies = ["quantum-pecos>=0.8.0.dev8"]
