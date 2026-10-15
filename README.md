@@ -16,10 +16,12 @@ We **stress** that the python tools available in this repository were written fo
 
 ## Installation
 
-`h2xh2` package components can be installed directly from source via pip
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then sync the project dependencies and editable `h2xh2` package from the repository root:
 ```
-pip install -e .
+uv sync
 ```
+
+Run Python commands in the project environment with `uv run`, for example `uv run python`.
 
 ## Contact
 
