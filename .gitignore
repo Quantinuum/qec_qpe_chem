@@ -3,6 +3,7 @@
 *.pyc
 __pycache__/
 .venv 
+.ipynb_checkpoints/
 
 # Mac file system.
 .DS_Store

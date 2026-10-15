@@ -31,3 +31,9 @@ zip-safe = false
 [tool.setuptools.packages.find]
 include = ["h2xh2*"]
 namespaces = false
+
+[dependency-groups]
+dev = ["jupyter"]
+
+[tool.uv]
+constraint-dependencies = ["quantum-pecos>=0.8.0.dev8"]

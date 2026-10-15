@@ -1507,7 +1507,7 @@ class SteaneCode(object):
         bitlist = result.get_bitlist()
         # Chose the data bit register.
         cbits = [b for b in bitlist if b.reg_name == rng.data_bits]
-        cbits = [b for b in sorted(cbits, key=lambda x: str(x))]
+        cbits = sorted(cbits, key=lambda x: x.index)
         # print(cbits)
         l_data = len(cbits)
         n_logical_qubits = l_data // 7
