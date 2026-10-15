@@ -49,10 +49,8 @@ for i, (target, prop) in enumerate(LSDATA):
         benchmark_result = json.load(f)
     ks = [3, 6, 9, 12]
     p0 = np.array(benchmark_result["p0"])
-    n_shots = np.array(benchmark_result["n_shots"])
-
-    # Calculate the circuit-wise standard error.
-    se = np.sqrt(p0 * (1 - p0) / n_shots + 1e-6)
+    # Use the stored circuit-wise standard error.
+    se = np.asarray(benchmark_result["p0_unc"])
     popt, pcov = curve_fit(
         fun,
         ks,
