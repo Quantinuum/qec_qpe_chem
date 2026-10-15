@@ -18,7 +18,7 @@ from typing import (
 )
 from pytket.circuit import Circuit
 from pytket.backends.backendresult import BackendResult
-from ..encode import EncodeOptions, InterpretOptions
+from ..encode.steane import EncodeOptions, InterpretOptions
 from ..algorithm import (
     get_qpe_func,
     get_ms,

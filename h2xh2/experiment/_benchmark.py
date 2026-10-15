@@ -19,7 +19,7 @@ from typing import (
 from pytket.circuit import Circuit
 from pytket.passes import RemoveBarriers
 from pytket.backends.backendresult import BackendResult
-from h2xh2.encode import EncodeOptions, InterpretOptions
+from ..encode.steane import EncodeOptions, InterpretOptions
 from ._chemistry import (
     get_state,
     get_ctrl_func,

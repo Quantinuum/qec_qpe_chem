@@ -51,10 +51,8 @@ for i, (target, prop) in enumerate(LSDATA):
         benchmark_result = json.load(f)
     ks = [3, 6, 9, 12]
     p0 = np.array(benchmark_result["p0"])
-    n_shots = np.array(benchmark_result["n_shots"])
-
-    # Calculate the circuit-wise standard error.
-    se = np.sqrt(p0 * (1 - p0) / n_shots + 1e-6)
+    # Use the stored circuit-wise standard error.
+    se = np.asarray(benchmark_result["p0_unc"])
     popt, pcov = curve_fit(
         fun,
         ks,
@@ -78,8 +76,7 @@ for i, (target, prop) in enumerate(LSDATA):
     xfit = np.linspace(0, ks[-1]+50, 100)
     xfit = np.arange(0, ks[-1]+50, 1, dtype=float)
     yfit = 2 * (1 - fun(xfit, *popt))
-    if target not in ["exp_hardware_no_qec"]:
-        plt.plot(xfit, yfit, "-", color=prop.color, alpha=0.6)
+    plt.plot(xfit, yfit, "-", color=prop.color, alpha=0.6)
 plt.xlabel(r"$k$")
 plt.grid()
 plt.ylabel(r"$q$")
@@ -87,4 +84,4 @@ plt.legend(fontsize=10)
 plt.xlim(0.0, 14)
 plt.ylim(-0.05, 1.1)
 # plt.show()
-plt.savefig("calibration_compare.pdf", dpi=300)
+plt.savefig("_fig_calibration_compare.pdf", dpi=300)

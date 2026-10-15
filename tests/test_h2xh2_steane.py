@@ -9,6 +9,7 @@ from pytket.circuit import (
     PauliExpBox,
     Pauli,
 )
+from h2xh2.encode.steane import encode, interpret
 from h2xh2.encode.steane._steane import (
     _get_prep_non_ft,
     _get_prep_ft,
@@ -62,6 +63,12 @@ def _run(circ: Circuit, n_shots: int = 1):
     c = b.get_compiled_circuit(circ, optimisation_level=0)
     r = b.run_circuit(c, n_shots=n_shots)
     return r
+
+
+def test_bell_pair_logical_correlation():
+    logical = Circuit(2).H(0).CX(0, 1).measure_all()
+    result = interpret(_run(encode(logical), n_shots=100))
+    assert set(result.get_counts()) <= {(0, 0), (1, 1)}
 
 
 def test_pf_resolve_phase():

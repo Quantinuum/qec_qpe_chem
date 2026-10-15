@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "h2xh2"
+version = "0.0.0-alpha"
+requires-python = ">=3.12"
+description = "Tools for reproducing the results from the paper"
+readme = "README.md"
+license = "Apache-2.0"
+dependencies = [
+    "jupyter",
+    "matplotlib",
+    "pytket>=2.0.0",
+    "pytket-quantinuum[pecos]>=0.47.0",
+]
+classifiers = [
+    "Environment :: Console",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+]
+
+[tool.setuptools]
+include-package-data = true
+zip-safe = false
+
+[tool.setuptools.packages.find]
+include = ["h2xh2*"]
+namespaces = false
+
+[tool.uv]
+constraint-dependencies = ["quantum-pecos>=0.8.0.dev8"]

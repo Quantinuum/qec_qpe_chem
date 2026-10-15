@@ -22,11 +22,11 @@ from pytket.circuit import (
     PauliExpBox,
     Pauli,
 )
-from ..encode import (
-    steane_z_correct,
-    steane_x_correct,
-    iceberg_w_0_detect,
-    iceberg_w_1_detect,
+from ..encode.steane import (
+    add_steane_z,
+    add_steane_x,
+    add_iceberg_w0,
+    add_iceberg_w1,
 )
 
 _APPROX_ENERGY: float = -1.13629792
@@ -116,7 +116,7 @@ def _add_ctrlu_1(
         if ii + 1 >= k:
             break
         circ.add_barrier(circ.qubits)
-        circ.add_custom_gate(steane_x_correct, [], [0])
+        add_steane_x(circ, circ.qubits[0])
         circ.add_barrier(circ.qubits)
     return circ
 
@@ -136,9 +136,9 @@ def _add_ctrlu_2(
         circ.CX(0, 1)
         # Steane QEC for X.
         circ.add_barrier(circ.qubits)
-        circ.add_custom_gate(steane_x_correct, [], [0])
+        add_steane_x(circ, circ.qubits[0])
         circ.add_barrier(circ.qubits)
-        circ.add_custom_gate(steane_x_correct, [], [1])
+        add_steane_x(circ, circ.qubits[1])
         circ.add_barrier(circ.qubits)
         # circ.CRx(2 * cx * deltat, 0, 1)
         circ.H(1)
@@ -153,11 +153,11 @@ def _add_ctrlu_2(
             break
         circ.add_barrier(circ.qubits)
 
-        circ.add_custom_gate(steane_x_correct, [], [0])
-        circ.add_custom_gate(steane_z_correct, [], [0])
+        add_steane_x(circ, circ.qubits[0])
+        add_steane_z(circ, circ.qubits[0])
         circ.add_barrier(circ.qubits)
-        circ.add_custom_gate(steane_x_correct, [], [1])
-        circ.add_custom_gate(steane_z_correct, [], [1])
+        add_steane_x(circ, circ.qubits[1])
+        add_steane_z(circ, circ.qubits[1])
         circ.add_barrier(circ.qubits)
     return circ
 
@@ -210,8 +210,8 @@ def get_ctrl_func(
             circ.qubits[:1],
         )
         if pft_rz:
-            circ.add_custom_gate(iceberg_w_0_detect, [], [0])
-            circ.add_custom_gate(iceberg_w_1_detect, [], [0])
+            add_iceberg_w0(circ, circ.qubits[0])
+            add_iceberg_w1(circ, circ.qubits[0])
         return circ
 
     return get_ctrlu
@@ -244,6 +244,6 @@ def get_state(
             )
         if pft_rz:
             # Iceberg-style error detection.
-            state.add_custom_gate(iceberg_w_0_detect, [], [0])
-            state.add_custom_gate(iceberg_w_1_detect, [], [0])
+            add_iceberg_w0(state, state.qubits[0])
+            add_iceberg_w1(state, state.qubits[0])
     return state
