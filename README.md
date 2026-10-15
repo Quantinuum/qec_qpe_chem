@@ -4,7 +4,7 @@ H2xH2 project resources
 
 This repository provides python tooling for running a Quantum Phase Estimation experiment for H2 on Quantinuum hardware presented in the paper:
 
-K. Yamamoto et al., "Quantum Error-Corrected Computation of Molecular Energies", [arXiv:2505.09133](https://arxiv.org/abs/2505.09133)
+K. Yamamoto et al., "Quantum Error-Corrected Computation of Molecular Energies", [PRX Quantum 7, 020319 (2026)](https://journals.aps.org/prxquantum/abstract/10.1103/m7j3-5sk6)
 
 It provides automatic tooling for running experiments on Quantinuum hardware using Steane code primitives, with support for QEC cycles and Iceberg error detection cycles. Rz gates are implemented with gate teleportation techniques. This repository is built on top of the [`pytket`](https://tket.quantinuum.com/api-docs/) library and contains all relevant source code.
 
