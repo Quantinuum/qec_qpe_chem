@@ -22,8 +22,3 @@ uv sync
 ```
 
 Run Python commands in the project environment with `uv run`, for example `uv run python`.
-
-## Contact
-
-Questions can be directed to <kentaro.yamamoto@quantinuum.com> or <silas.dilkes@quantinuum.com>.
-
